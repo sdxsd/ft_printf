@@ -1,0 +1,7 @@
+libft
+*.o
+*.c
+*.gch
+*.so
+*.a
+a.out
