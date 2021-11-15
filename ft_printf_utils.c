@@ -6,16 +6,16 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 14:48:37 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/15 17:07:59 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void	ft_puthex(unsigned int nb, unsigned int mode)
+void	ft_puthex(size_t nb, unsigned int mode)
 {
-	static int	temp;
+	size_t	temp;
 
 	if (nb != 0)
 	{
@@ -33,8 +33,19 @@ void	ft_puthex(unsigned int nb, unsigned int mode)
 	}
 }
 
-void	ft_putvoid(int ptr)
+void	ft_unsigned_putnbr(unsigned int nb)
 {
-	ft_putstr("0x1");
-	ft_puthex((int)ptr, 0);
+	if (nb < 10)
+	{
+		ft_putchar(nb + '0');
+		return ;
+	}	
+	ft_putnbr(nb / 10);
+	ft_putnbr((nb % 10));
+}
+
+void	ft_putvoid(size_t ptr)
+{
+	ft_putstr("0x");
+	ft_puthex((size_t)ptr, 0);
 }

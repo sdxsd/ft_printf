@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 15:33:24 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/15 18:44:57 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// make null string return (null);
 int	handle_variable(const char *spec, va_list arglist)
 {
 	if (spec[1] == 'c')
@@ -26,13 +27,13 @@ int	handle_variable(const char *spec, va_list arglist)
 	else if (spec[1] == '%')
 		ft_putchar('%');
 	else if (spec[1] == 'p')
-		ft_putvoid(va_arg(arglist, int));
+		ft_putvoid(va_arg(arglist, size_t));
 	else if (spec[1] == 'x')
 		ft_puthex(va_arg(arglist, unsigned int), 0);
 	else if (spec[1] == 'X')
 		ft_puthex(va_arg(arglist, unsigned int), 1);
 	else if (spec[1] == 'u')
-		ft_putnbr(va_arg(arglist, unsigned int));
+		ft_unsigned_putnbr(va_arg(arglist, unsigned int));
 	return (1);
 }
 
@@ -57,6 +58,7 @@ int	ft_printf(const char *fmt, ...)
 			ft_putchar(fmt[iterator]);
 		iterator++;
 	}
+	va_end(arglist);
 	return (iterator);
 }
 

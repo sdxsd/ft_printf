@@ -7,9 +7,10 @@ CFILES = \
 		ft_printf_utils.c
 OFILES = $(CFILES:.c=.o)
 
-all: $(NAME) c_libft
+all: c_libft $(NAME) 
 
 $(NAME): $(OFILES)
+	cp libft/libft.a $@
 	@ar -rcs $(NAME) $?
 	@echo "COMPILED FT_PRINTF"
 	@echo ""
