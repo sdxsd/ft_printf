@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 15:00:53 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/15 15:33:24 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ int	ft_printf(const char *fmt, ...)
 	return (iterator);
 }
 
-
+/*
 int main()
 {
 
 	void *ptr = malloc(1024 * 5);
 	char *str = "coolej";
-	ft_printf("%p\n", (void *)str);
-	printf("%p\n", (void *)str);
+	ft_printf("ft_printf: %p\n", (void *)str);
+	printf("printf: %p\n", (void *)str);
 }
+*/
