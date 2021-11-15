@@ -5,3 +5,4 @@ libft/
 *.so
 *.a
 a.out
+a.out.dSYM
