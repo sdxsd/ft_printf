@@ -6,14 +6,14 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 11:43:09 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/15 11:56:01 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-char	*handle_variable(const char *spec, va_list arglist)
+int	handle_variable(const char *spec, va_list arglist)
 {
 	int	iter;
 
@@ -24,6 +24,9 @@ char	*handle_variable(const char *spec, va_list arglist)
 		ft_putstr(va_arg(arglist, char *));
 	else if (spec[iter] == 'd')
 		ft_putnbr(va_arg(arglist, int));
+	else if (spec[iter] == '%')
+		ft_putchar('%');
+	return (1);
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -40,6 +43,7 @@ int	ft_printf(const char *fmt, ...)
 		if (fmt[iterator] == '%')
 		{
 			handle_variable(&fmt[iterator], arglist);
+			va_arg(arglist, int);
 			iterator++;
 		}
 		else
