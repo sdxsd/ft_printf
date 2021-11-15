@@ -6,26 +6,33 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 11:56:01 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/15 15:00:53 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 int	handle_variable(const char *spec, va_list arglist)
 {
-	int	iter;
-
-	iter = 1;
-	if (spec[iter] == 'c')
+	if (spec[1] == 'c')
 		ft_putchar(va_arg(arglist, int));
-	else if (spec[iter] == 's')
+	else if (spec[1] == 's')
 		ft_putstr(va_arg(arglist, char *));
-	else if (spec[iter] == 'd')
+	else if (spec[1] == 'd' || spec[1] == 'i')
 		ft_putnbr(va_arg(arglist, int));
-	else if (spec[iter] == '%')
+	else if (spec[1] == '%')
 		ft_putchar('%');
+	else if (spec[1] == 'p')
+		ft_putvoid(va_arg(arglist, int));
+	else if (spec[1] == 'x')
+		ft_puthex(va_arg(arglist, unsigned int), 0);
+	else if (spec[1] == 'X')
+		ft_puthex(va_arg(arglist, unsigned int), 1);
+	else if (spec[1] == 'u')
+		ft_putnbr(va_arg(arglist, unsigned int));
 	return (1);
 }
 
@@ -50,10 +57,15 @@ int	ft_printf(const char *fmt, ...)
 			ft_putchar(fmt[iterator]);
 		iterator++;
 	}
-	return (0);
+	return (iterator);
 }
+
 
 int main()
 {
-	ft_printf("da's een %d uit %d %s", 10, 10, "lekker snoepje!\n");
+
+	void *ptr = malloc(1024 * 5);
+	char *str = "coolej";
+	ft_printf("%p\n", (void *)str);
+	printf("%p\n", (void *)str);
 }
