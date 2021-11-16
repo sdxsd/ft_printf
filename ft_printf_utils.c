@@ -6,20 +6,23 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 13:10:04 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/16 17:36:43 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
+/*
 int	ft_puthex(size_t nb, unsigned int mode)
 {
-	size_t	temp;
-	int		x;
+	size_t		temp;
+	int			x;
 
 	x = 0;
-	if (nb != 0)
+	if (nb == 0)
+		return (write(1, "0", 1));
+	else
 	{
 		x += ft_puthex(nb / 16, mode);
 		temp = nb % 16;
@@ -27,11 +30,37 @@ int	ft_puthex(size_t nb, unsigned int mode)
 			x += ft_putchar_len(temp + 48);
 		else
 		{
-			if (mode && mode)
+			if (mode)
 				x += ft_putchar_len(temp + 55);
 			else
 				x += ft_putchar_len(ft_tolower(temp + 55));
 		}
+	}
+	return (x);
+}
+*/
+
+int	ft_puthex(size_t nb, unsigned int mode)
+{
+	size_t	temp;
+	int		x;
+
+	x = 0;
+	if (nb == 0)
+		return (write(1, "0", 1));
+	while (nb != 0)
+	{
+		temp = nb % 16;
+		if (temp < 10)
+			x += ft_putchar_len(temp + 48);
+		else
+		{
+			if (mode)
+				x += ft_putchar_len(temp + 55);
+			else
+				x += ft_putchar_len(ft_tolower(temp + 55));
+		}
+		nb /= 16;
 	}
 	return (x);
 }
@@ -41,7 +70,7 @@ int	ft_putstr_len(char *str)
 	int	iterator;
 
 	if (!str)
-		return (ft_putstr_len("(null)") + 1);
+		return (write(1, "(null)", 6));
 	iterator = 0;
 	while (str[iterator] != '\0')
 	{
@@ -57,10 +86,7 @@ int	ft_putnbr_len(int nb)
 
 	x = 0;
 	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
+		return (write(1, "-2147483648", 11));
 	if (nb < 0)
 	{
 		x += ft_putchar_len('-');

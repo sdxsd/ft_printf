@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 13:06:38 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/16 15:55:46 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 int	ft_putchar_len(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	handle_variable(const char *spec, va_list arglist)

@@ -4,5 +4,6 @@ libft/
 *.gch
 *.so
 *.a
+ft_printf-tester/
 a.out
 a.out.dSYM
