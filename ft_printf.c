@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 11:37:42 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/16 13:06:38 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	handle_variable(const char *spec, va_list arglist)
 		return (ft_puthex(va_arg(arglist, unsigned int), 1));
 	else if (spec[1] == 'u')
 		return (ft_unsigned_putnbr(va_arg(arglist, unsigned int)));
-	return (0);
+	return (1);
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -72,10 +72,7 @@ int	ft_printf(const char *fmt, ...)
 /*
 int main()
 {
-
-	void *ptr = malloc(1024 * 5);
-	char *str = "coolej";
-	ft_printf("ft_printf: %p\n", (void *)str);
-	printf("printf: %p\n", (void *)str);
+	ft_printf("%");
+	printf("%");
 }
 */

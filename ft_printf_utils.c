@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 11:45:27 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/16 13:10:04 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_putstr_len(char *str)
 	int	iterator;
 
 	if (!str)
-		return (ft_putstr_len("(null)"));
+		return (ft_putstr_len("(null)") + 1);
 	iterator = 0;
 	while (str[iterator] != '\0')
 	{
@@ -66,6 +66,8 @@ int	ft_putnbr_len(int nb)
 		x += ft_putchar_len('-');
 		nb *= (-1);
 	}
+	if (nb < 10 && x != 0)
+		return (ft_putchar_len(nb + '0') + 1);		
 	if (nb < 10)
 		return (ft_putchar_len(nb + '0'));
 	x += ft_putnbr_len(nb / 10);
@@ -90,6 +92,8 @@ int	ft_putvoid(size_t ptr)
 	int	x;
 
 	x = 0;
+	if (ptr == 0)
+		return (ft_putstr_len("0x0"));
 	ft_putstr("0x");
 	x += ft_puthex((size_t)ptr, 0);
 	return (x + 2);
