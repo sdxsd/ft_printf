@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/15 18:44:57 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/16 11:37:42 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// make null string return (null);
+int	ft_putchar_len(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
 int	handle_variable(const char *spec, va_list arglist)
 {
 	if (spec[1] == 'c')
-		ft_putchar(va_arg(arglist, int));
-	else if (spec[1] == 's')
-		ft_putstr(va_arg(arglist, char *));
-	else if (spec[1] == 'd' || spec[1] == 'i')
-		ft_putnbr(va_arg(arglist, int));
+		return (ft_putchar_len(va_arg(arglist, int)));
 	else if (spec[1] == '%')
-		ft_putchar('%');
+		return (ft_putchar_len('%'));
+	else if (spec[1] == 's')
+		return (ft_putstr_len(va_arg(arglist, char *)));
+	else if (spec[1] == 'd' || spec[1] == 'i')
+		return (ft_putnbr_len(va_arg(arglist, int)));
 	else if (spec[1] == 'p')
-		ft_putvoid(va_arg(arglist, size_t));
+		return (ft_putvoid(va_arg(arglist, size_t)));
 	else if (spec[1] == 'x')
-		ft_puthex(va_arg(arglist, unsigned int), 0);
+		return (ft_puthex(va_arg(arglist, unsigned int), 0));
 	else if (spec[1] == 'X')
-		ft_puthex(va_arg(arglist, unsigned int), 1);
+		return (ft_puthex(va_arg(arglist, unsigned int), 1));
 	else if (spec[1] == 'u')
-		ft_unsigned_putnbr(va_arg(arglist, unsigned int));
-	return (1);
+		return (ft_unsigned_putnbr(va_arg(arglist, unsigned int)));
+	return (0);
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -42,24 +47,26 @@ int	ft_printf(const char *fmt, ...)
 	va_list	arglist;
 	int		arg_iter;
 	int		iterator;
+	int		x;
 
 	arg_iter = 0;
 	iterator = 0;
+	x = 0;
 	va_start(arglist, fmt);
 	while (fmt[iterator] != '\0')
 	{
 		if (fmt[iterator] == '%')
 		{
-			handle_variable(&fmt[iterator], arglist);
+			x += handle_variable(&fmt[iterator], arglist);
 			va_arg(arglist, int);
 			iterator++;
 		}
 		else
-			ft_putchar(fmt[iterator]);
+			x += ft_putchar_len(fmt[iterator]);
 		iterator++;
 	}
 	va_end(arglist);
-	return (iterator);
+	return (x);
 }
 
 /*
