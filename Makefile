@@ -7,7 +7,7 @@ CFILES = \
 		ft_printf_utils.c
 OFILES = $(CFILES:.c=.o)
 
-all: c_libft $(NAME) 
+all: c_libft $(NAME)
 
 $(NAME): $(OFILES)
 	cp libft/libft.a $@

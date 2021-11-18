@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/18 15:02:47 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/18 15:40:38 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 int	ft_putchar_len(char c)
 {
@@ -66,7 +67,8 @@ int	ft_printf(const char *fmt, ...)
 		if (fmt[iterator] == '%')
 		{
 			x += handle_variable(&fmt[iterator], arglist);
-			va_arg(arglist, int);
+			if (fmt[iterator + 1] != '%')
+				va_arg(arglist, int);
 			if (fmt[iterator + 1] != '\0')
 				iterator++;
 		}
@@ -77,11 +79,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(arglist);
 	return (x);
 }
-
-/*
-int main()
-{
-	ft_printf("%");
-	printf("%");
-}
-*/

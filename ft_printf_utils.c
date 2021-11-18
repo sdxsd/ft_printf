@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/18 14:19:59 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/18 15:17:33 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	ft_puthex(size_t nb, unsigned int mode)
 {
-	unsigned int	temp;
-	int				x;
+	size_t	temp;
+	int		x;
 
 	x = 0;
 	if (nb != 0)
