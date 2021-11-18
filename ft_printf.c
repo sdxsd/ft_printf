@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/18 14:16:22 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/18 15:02:47 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int	handle_variable(const char *spec, va_list arglist)
 		return (edgelord_hex(va_arg(arglist, size_t), 1));
 	else if (spec[1] == 'u')
 		return (ft_unsigned_putnbr(va_arg(arglist, unsigned int)));
-	return (1);
+	else if (spec[1] != '\0')
+		return (ft_putchar_len(spec[1]));
+	else
+		return (0);
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -64,7 +67,8 @@ int	ft_printf(const char *fmt, ...)
 		{
 			x += handle_variable(&fmt[iterator], arglist);
 			va_arg(arglist, int);
-			iterator++;
+			if (fmt[iterator + 1] != '\0')
+				iterator++;
 		}
 		else
 			x += ft_putchar_len(fmt[iterator]);
@@ -77,11 +81,7 @@ int	ft_printf(const char *fmt, ...)
 /*
 int main()
 {
-	unsigned long x;
-
-	x = -1; 
-	printf("%u\n", 18446744073709551615);
-	ft_printf("%X\n", -1);
-	printf("%X\n", -1);
+	ft_printf("%");
+	printf("%");
 }
 */
