@@ -6,15 +6,13 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/18 15:40:38 by wmaguire      ########   odam.nl         */
+/*   Updated: 2021/11/18 15:48:48 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 #include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
 
 int	ft_putchar_len(char c)
 {
