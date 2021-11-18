@@ -6,7 +6,7 @@
 /*   By: wmaguire <wmaguire@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:29:03 by wmaguire          #+#    #+#             */
-/*   Updated: 2021/11/18 13:40:17 by wmaguire         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:42:01 by wmaguire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ int	handle_variable(const char *spec, va_list arglist)
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	arglist;
-	int		arg_iter;
 	int		iterator;
 	int		x;
 
-	arg_iter = 0;
 	iterator = 0;
 	x = 0;
 	va_start(arglist, fmt);
