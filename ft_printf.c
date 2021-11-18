@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 15:55:46 by wmaguire      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wmaguire <wmaguire@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/11 15:29:03 by wmaguire          #+#    #+#             */
+/*   Updated: 2021/11/18 13:16:43 by wmaguire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_putchar_len(char c)
 
 int	handle_variable(const char *spec, va_list arglist)
 {
+	size_t	x;
+
 	if (spec[1] == 'c')
 		return (ft_putchar_len(va_arg(arglist, int)));
 	else if (spec[1] == '%')
@@ -33,9 +35,21 @@ int	handle_variable(const char *spec, va_list arglist)
 	else if (spec[1] == 'p')
 		return (ft_putvoid(va_arg(arglist, size_t)));
 	else if (spec[1] == 'x')
-		return (ft_puthex(va_arg(arglist, unsigned int), 0));
+	{
+		x = va_arg(arglist, size_t);
+		if (x == 0)
+			return (write(1, "0", 1));
+		else
+			return (ft_puthex(x, 0));
+	}
 	else if (spec[1] == 'X')
-		return (ft_puthex(va_arg(arglist, unsigned int), 1));
+	{
+		x = va_arg(arglist, size_t);
+		if (x == 0)
+			return (write(1, "0", 1));
+		else
+			return (ft_puthex(x, 1));
+	}
 	else if (spec[1] == 'u')
 		return (ft_unsigned_putnbr(va_arg(arglist, unsigned int)));
 	return (1);

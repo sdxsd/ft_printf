@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_printf_utils.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
-/*   Updated: 2021/11/16 17:36:43 by wmaguire      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wmaguire <wmaguire@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/15 12:07:06 by wmaguire          #+#    #+#             */
+/*   Updated: 2021/11/18 13:11:45 by wmaguire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-/*
 int	ft_puthex(size_t nb, unsigned int mode)
 {
 	size_t		temp;
 	int			x;
 
 	x = 0;
-	if (nb == 0)
-		return (write(1, "0", 1));
-	else
+	if (nb != 0)
 	{
 		x += ft_puthex(nb / 16, mode);
 		temp = nb % 16;
@@ -38,8 +35,8 @@ int	ft_puthex(size_t nb, unsigned int mode)
 	}
 	return (x);
 }
-*/
 
+/*
 int	ft_puthex(size_t nb, unsigned int mode)
 {
 	size_t	temp;
@@ -64,6 +61,7 @@ int	ft_puthex(size_t nb, unsigned int mode)
 	}
 	return (x);
 }
+*/
 
 int	ft_putstr_len(char *str)
 {
