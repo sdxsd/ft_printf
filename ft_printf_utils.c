@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wmaguire <wmaguire@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 12:07:06 by wmaguire          #+#    #+#             */
-/*   Updated: 2021/11/18 13:44:09 by wmaguire         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf_utils.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/11/15 12:07:06 by wmaguire      #+#    #+#                 */
+/*   Updated: 2021/11/18 14:19:59 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	ft_puthex(size_t nb, unsigned int mode)
 {
-	size_t		temp;
-	int			x;
+	unsigned int	temp;
+	int				x;
 
 	x = 0;
 	if (nb != 0)
@@ -92,6 +92,6 @@ int	ft_putvoid(size_t ptr)
 	if (ptr == 0)
 		return (ft_putstr_len("0x0"));
 	ft_putstr("0x");
-	x += ft_puthex((size_t)ptr, 0);
+	x += ft_puthex(ptr, 0);
 	return (x + 2);
 }

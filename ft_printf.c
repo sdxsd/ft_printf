@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wmaguire <wmaguire@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 15:29:03 by wmaguire          #+#    #+#             */
-/*   Updated: 2021/11/18 13:42:01 by wmaguire         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wmaguire <wmaguire@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/11/11 15:29:03 by wmaguire      #+#    #+#                 */
+/*   Updated: 2021/11/18 14:16:22 by wmaguire      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_putchar_len(char c)
 	return (write(1, &c, 1));
 }
 
-static int	edgelord_hex(size_t nb, unsigned int mode)
+static int	edgelord_hex(unsigned int nb, unsigned int mode)
 {
 	if (nb == 0)
 		return (write(1, "0", 1));
@@ -41,7 +41,7 @@ int	handle_variable(const char *spec, va_list arglist)
 	else if (spec[1] == 'p')
 		return (ft_putvoid(va_arg(arglist, size_t)));
 	else if (spec[1] == 'x')
-		return (edgelord_hex(va_arg(arglist, size_t), 0));
+		return (edgelord_hex(va_arg(arglist, unsigned int), 0));
 	else if (spec[1] == 'X')
 		return (edgelord_hex(va_arg(arglist, size_t), 1));
 	else if (spec[1] == 'u')
@@ -77,7 +77,11 @@ int	ft_printf(const char *fmt, ...)
 /*
 int main()
 {
-	ft_printf("%");
-	printf("%");
+	unsigned long x;
+
+	x = -1; 
+	printf("%u\n", 18446744073709551615);
+	ft_printf("%X\n", -1);
+	printf("%X\n", -1);
 }
 */
