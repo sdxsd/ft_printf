@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 int	ft_printf(const char *fmt, ...);
-int	handle_variable(const char *spec, va_list arglist);
+int	handle_variable(const char spec, va_list arglist);
 int	ft_puthex(size_t nb, unsigned int mode);
 int	ft_putvoid(size_t ptr);
 int	ft_unsigned_putnbr(unsigned int nb);
