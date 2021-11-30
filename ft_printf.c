@@ -65,8 +65,6 @@ int	ft_printf(const char *fmt, ...)
 		if (fmt[iterator] == '%')
 		{
 			x += handle_variable(&fmt[iterator], arglist);
-			if (fmt[iterator + 1] != '%')
-				va_arg(arglist, int);
 			if (fmt[iterator + 1] != '\0')
 				iterator++;
 		}
