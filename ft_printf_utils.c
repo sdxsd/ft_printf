@@ -16,7 +16,7 @@
 int	ft_puthex(size_t nb, unsigned int mode)
 {
 	size_t	temp;
-	int		x;
+	size_t	x;
 
 	x = 0;
 	if (nb != 0)
@@ -90,7 +90,7 @@ int	ft_putvoid(size_t ptr)
 
 	x = 0;
 	if (ptr == 0)
-		return (ft_putstr_len("0x0"));
+		return (ft_putstr_len("(nil)"));
 	ft_putstr("0x");
 	x += ft_puthex(ptr, 0);
 	return (x + 2);
