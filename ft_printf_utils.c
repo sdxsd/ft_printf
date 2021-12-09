@@ -90,7 +90,7 @@ int	ft_putvoid(size_t ptr)
 
 	x = 0;
 	if (ptr == 0)
-		return (ft_putstr_len("(nil)"));
+		return (ft_putstr_len("0x0"));
 	ft_putstr("0x");
 	x += ft_puthex(ptr, 0);
 	return (x + 2);
